@@ -1,12 +1,12 @@
-import { VscCode } from "react-icons/vsc";
+import { Armchair } from 'lucide-react';
 import { Button } from "../ui/button";
 import Link from "next/link";
 
 const Logo = () => {
   return (
-    <Button size={'icon-lg'} asChild>
+    <Button size={'icon'} asChild className='rounded-xl'>
       <Link href={"/"}>
-        <VscCode />
+        <Armchair className='w-6 h-6' />
       </Link>
     </Button>
   );

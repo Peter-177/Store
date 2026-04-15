@@ -4,10 +4,24 @@ import "./globals.css";
 import Navbar from "@/components/navbar/Navbar";
 import Container from "@/components/global/Container";
 import { cn } from "@/lib/utils";
+import Provider from "./provider";
+import {
+  ClerkProvider,
+  Show,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
 
-const robotoHeading = Roboto({subsets:['latin'],variable:'--font-heading'});
+const robotoHeading = Roboto({
+  subsets: ["latin"],
+  variable: "--font-heading",
+});
 
-const jetbrainsMono = JetBrains_Mono({subsets:['latin'],variable:'--font-mono'});
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,14 +44,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-mono", jetbrainsMono.variable, robotoHeading.variable)}
-    >
-      <body className="min-h-full flex flex-col">
-        <Navbar />
-        <Container className="py-20">{children}</Container>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html
+        lang="en"
+        suppressHydrationWarning
+        className={cn(
+          "h-full",
+          "antialiased",
+          geistSans.variable,
+          geistMono.variable,
+          "font-mono",
+          jetbrainsMono.variable,
+          robotoHeading.variable,
+        )}
+      >
+        <body className="min-h-screen flex flex-col" suppressHydrationWarning>
+          <Provider>
+            <Navbar />
+            <Container className="py-20">{children}</Container>
+          </Provider>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

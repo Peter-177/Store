@@ -1,9 +1,9 @@
-import React from 'react'
+"use client";
+
+import {useToast}
 
 const SignOutLink = () => {
-  return (
-    <div>SignOutLink</div>
-  )
-}
+  return <div>SignOutLink</div>;
+};
 
-export default SignOutLink
+export default SignOutLink;
