@@ -18,7 +18,7 @@ const Navbar = async () => {
         <div className="flex gap-4 items-center">
           <CartButton/>
           <DarkMode/>
-          <LinksDropdown profileImage={profileImage} />
+          <LinksDropdown/>
         </div>
       </Container>
     </nav>
