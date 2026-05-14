@@ -412,7 +412,7 @@ export const fetchOrCreateCart = async ({
   errorOnFailure = false,
 }: {
   userId: string;
-  errorOnFailure: boolean;
+  errorOnFailure?: boolean;
 }) => {
   let cart = await db.cart.findFirst({
     where: {
