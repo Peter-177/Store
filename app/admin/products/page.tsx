@@ -1,9 +1,5 @@
 import EmptyList from "@/components/global/EmptyList";
-import {
-
-  deleteProductAction,
-  fetchAdminProducts,
-} from "@/utils/action";
+import { deleteProductAction, fetchAdminProducts } from "@/utils/action";
 import Link from "next/link";
 
 import { formatPrice } from "@/utils/format";
@@ -18,6 +14,8 @@ import {
 } from "@/components/ui/table";
 import { IconButton } from "@/components/form/Button";
 import FormContainer from "@/components/form/FormContainer";
+
+import { Product } from "@prisma/client";
 
 async function ItemsPage() {
   const items = await fetchAdminProducts();
@@ -37,7 +35,7 @@ async function ItemsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {items.map((item) => {
+          {items.map((item: Product) => {
             const { id: productId, name, company, price } = item;
             return (
               <TableRow key={productId}>
@@ -56,7 +54,7 @@ async function ItemsPage() {
                   <Link href={`/admin/products/${productId}/edit`}>
                     <IconButton actionType="edit" />
                   </Link>
-                  <DeleteProduct productId={productId}/>
+                  <DeleteProduct productId={productId} />
                 </TableCell>
               </TableRow>
             );
