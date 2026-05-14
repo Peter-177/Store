@@ -15,7 +15,6 @@ import {
 import { IconButton } from "@/components/form/Button";
 import FormContainer from "@/components/form/FormContainer";
 
-import { Product } from "@prisma/client";
 
 async function ItemsPage() {
   const items = await fetchAdminProducts();
@@ -35,7 +34,7 @@ async function ItemsPage() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {items.map((item: Product) => {
+          {items.map((item) => {
             const { id: productId, name, company, price } = item;
             return (
               <TableRow key={productId}>
