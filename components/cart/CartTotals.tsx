@@ -1,5 +1,4 @@
 import { Card, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { formatPrice } from "@/utils/format";
 import { createOrderAction } from "@/utils/action";
 import FormContainer from "../form/FormContainer";
@@ -15,7 +14,7 @@ const CartTotals = ({ cart }: { cart: Cart }) => {
         <CartTotalRow label="Shipping" amount={shipping} />
         <CartTotalRow label="Tax" amount={tax} />
         <CardTitle className="mt-8">
-          <CartTotalRow label="Order Total" amount={orderTotal} lastRow />
+          <CartTotalRow label="Order Total" amount={orderTotal} />
         </CardTitle>
       </Card>
       <FormContainer action={createOrderAction}>
@@ -25,25 +24,15 @@ const CartTotals = ({ cart }: { cart: Cart }) => {
   );
 };
 
-const CartTotalRow = ({
-  label,
-  amount,
-  lastRow,
-}: {
-  label: string;
-  amount: number;
-  lastRow?: boolean;
-}) => {
+const CartTotalRow = ({ label, amount }: { label: string; amount: number }) => {
   return (
     <>
       <div className="flex justify-between text-sm">
         <span>{label}</span>
         <span>{formatPrice(amount)}</span>
-        {lastRow ? null : <Separator className="my-2" />}
       </div>
     </>
   );
 };
 
 export default CartTotals;
-
